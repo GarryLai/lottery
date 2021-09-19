@@ -1,23 +1,15 @@
 <html>
 <head>
-<title>Lottery</title>
+<title>簡單抽獎小工具</title>
 </head>
 <body>
 <script>
+function rand(a, b) {  
+  return 0.5-Math.random();
+}  
+
 function shuffle(array) {
-  let currentIndex = array.length,  randomIndex;
-
-  // While there remain elements to shuffle...
-  while (currentIndex != 0) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
-  }
+  array.sort(rand);
 
   return array;
 }
@@ -34,7 +26,6 @@ function random_bg_color() {
     var y = Math.floor(Math.random() * 256);
     var z = Math.floor(Math.random() * 256);
     var bgColor = "rgb(" + x + "," + y + "," + z + ")";
-    console.log(bgColor);
   
     document.body.style.background = bgColor;
 }
@@ -42,9 +33,9 @@ function random_bg_color() {
 random_bg_color();
 window.setInterval(( () => random_bg_color() ), 500);
 </script>
-<textarea id="candidates" cols="50" rows="30">
+<textarea id="candidates" style="font-size: 24px; width: 100%; height: 70%;">
 </textarea>
 <hr>
-<button onclick="start()">抽起來！</button>
+<button onclick="start()" style="font-size: 60px; width: 100%; height: 20%;">抽抽抽！ヾ(•ω•`)o</button>
 </body>
 </html>
