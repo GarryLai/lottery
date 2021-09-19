@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Lottery</title>
+</head>
+<body>
+<script>
+function shuffle(array) {
+  let currentIndex = array.length,  randomIndex;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
+function start() {
+	var candidates = document.getElementById("candidates").value;
+	candidates = candidates.split('\n');
+	shuffle(candidates);
+	alert(candidates.join("\n"));
+}
+
+function random_bg_color() {
+    var x = Math.floor(Math.random() * 256);
+    var y = Math.floor(Math.random() * 256);
+    var z = Math.floor(Math.random() * 256);
+    var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+    console.log(bgColor);
+  
+    document.body.style.background = bgColor;
+}
+
+random_bg_color();
+window.setInterval(( () => random_bg_color() ), 500);
+</script>
+<textarea id="candidates" cols="50" rows="30">
+</textarea>
+<hr>
+<button onclick="start()">抽起來！</button>
+</body>
+</html>
